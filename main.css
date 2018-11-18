@@ -1,0 +1,40 @@
+.galleryContainer{
+    padding:100px;
+  }
+  .galleryItem{
+    height:400px;
+    width:600px;
+    cursor: pointer;
+    display: inline-block;
+    margin: 10px;
+    
+  }
+  
+  .galleryItem img{
+    width: 100%;
+  
+}
+  #fullImageContainer{
+    display: none;
+    padding-top:100px;
+    text-align:center;
+    top:0;
+    left:0;
+    position:fixed;
+    height:100%;
+    width:100%;
+    background:rgba(0,0,0,0.9);
+  }
+  #closeButton{
+    position:absolute;
+    top:20px;
+    right:50px;
+    color:white;
+    cursor:pointer;
+    padding:15px;
+    transition: all 0.3s linear;
+  }
+  #closeButton:hover{
+    background:white;
+    color:black;
+  }
