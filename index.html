@@ -3,41 +3,82 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Gallery</title>
+    <title>Gallery - Animated</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
 </head>
 <body>
-    <div class="galleryContainer">
-        <div class="galleryItem" onClick="openImage('images/AdAddnAddy.jpg')">
-            <img src='images/AdAddnAddy.jpg'>
+    <div id="galleryContainer">
+        <div class="galleryItem" onClick="openImage(0)" style="background:url('images/AdAddnAddy.jpg')">
+            <div class="overlay">
+                <h2 id="title">Image 1</h2>
+            </div>
+        </div><!--
+     --><div class="galleryItem" onClick="openImage(1)" style="background:url('images/gaming.jpg')">
+            <div class="overlay">
+                <h2 id="title">Image 2</h2>
+            </div>
+        </div><!--
+     --><div class="galleryItem" onClick="openImage(2)" style="background:url('images/CodeALine.jpg')">
+            <div class="overlay">
+                <h2 id="title">Image 3</h2>
+            </div>
+        </div><!--
+     --><div class="galleryItem" onClick="openImage(3)" style="background:url('images/Crossword.jpg')">
+            <div class="overlay">
+                <h2 id="title">Image 4</h2>
+            </div>
         </div>
-        <div class="galleryItem" onClick="openImage('images/gaming.jpg')">
-            <img src='images/gaming.jpg'>
-        </div>
-        
-      </div>
-      <div id="fullImageContainer">
+    </div>
+    <div id="openContainer">
         <div id="closeButton" onClick="closeImage()">CLOSE</div>
-        <img id="image">
-        
-      </div>
+        <div class="innerContainer">    
+            <img id="image">
+            <br>
+            <br>
+            <p id="imageTitle"></p>
+        </div>
+    </div>
       
 </body>
 
 <script>
+    var images = [
+        {
+            title:"Image 1",
+            link:'images/AdAddnAddy.jpg'
+        },
+        {
+            title:"Image 2",
+            link:'images/gaming.jpg'
+        },
+        {
+            title:"Image 3",
+            link:'images/CodeALine.jpg'
+        },
+        {
+            title:"Image 3",
+            link:'images/Crossword.jpg'
+        }
+    
+    
+    ]
     window.onload  = function(){
-        var image = document.getElementById("item1");
         var closeButton = document.getElementById("closeButton"); 
-        var fullImageContainer = document.getElementById("fullImageContainer"); 
+        var openContainer = document.getElementById("openContainer"); 
+        var galleryContainer = document.getElementById("galleryContainer");
+        var image = document.getElementById("image");
+        var imageTitle = document.getElementById("imageTitle");
     }
-    function openImage(imageLink){
-        fullImageContainer.style.display= "block";
-        image.setAttribute("src",imageLink)
+    function openImage(imageNumber){
+        openContainer.style.marginLeft = "0";
+        imageTitle.innerHTML = images[imageNumber].title;
+        image.setAttribute("src",images[imageNumber].link);
     };
 
     function closeImage(){
-        fullImageContainer.style.display= "none";
+        imageTitle.innerHTML = "";
+        openContainer.style.marginLeft = "100%";
         image.setAttribute("src","");
     };
 </script>
