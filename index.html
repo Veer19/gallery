@@ -8,28 +8,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
 </head>
 <body>
-    <div id="galleryContainer">
-        <div class="galleryItem" onClick="openImage(0)" style="background:url('images/AdAddnAddy.jpg')">
-            <div class="overlay">
-                <h2 id="title">Image 1</h2>
-            </div>
-        </div><!--
-     --><div class="galleryItem" onClick="openImage(1)" style="background:url('images/gaming.jpg')">
-            <div class="overlay">
-                <h2 id="title">Image 2</h2>
-            </div>
-        </div><!--
-     --><div class="galleryItem" onClick="openImage(2)" style="background:url('images/CodeALine.jpg')">
-            <div class="overlay">
-                <h2 id="title">Image 3</h2>
-            </div>
-        </div><!--
-     --><div class="galleryItem" onClick="openImage(3)" style="background:url('images/Crossword.jpg')">
-            <div class="overlay">
-                <h2 id="title">Image 4</h2>
-            </div>
-        </div>
-    </div>
+    <div id="galleryContainer"></div>
     <div id="openContainer">
         <div id="closeButton" onClick="closeImage()">CLOSE</div>
         <div class="innerContainer">    
@@ -64,9 +43,24 @@
     
     ]
     window.onload  = function(){
-        var closeButton = document.getElementById("closeButton"); 
-        var openContainer = document.getElementById("openContainer"); 
+        
         var galleryContainer = document.getElementById("galleryContainer");
+        var galleryItems;
+        var items = "";
+        for(var i=0;i<images.length;i++){
+            items = items + `<div class="galleryItem" onClick="openImage(`+ i +`)">
+                                <div class="overlay">
+                                    <h2 id="title">`+ images[i].title +`</h2>
+                                </div>
+                            </div>`;
+        }
+        galleryContainer.innerHTML = items;
+        for(var i=0;i<images.length;i++){
+            console.log(galleryContainer.children[i]);
+            galleryContainer.children[i].style.backgroundImage = "url("+images[i].link+")";
+        }
+        var openContainer = document.getElementById("openContainer"); 
+        var closeButton = document.getElementById("closeButton"); 
         var image = document.getElementById("image");
         var imageTitle = document.getElementById("imageTitle");
     }
